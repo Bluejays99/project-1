@@ -51,26 +51,33 @@ footer p {
 }
 
 #second-page {
-    height: 1000px; 
+    height: 800px; 
 }
 
 .thumbnail {
     display: block;
+    margin-top: 7px;
+    
 }
 
 .title {
     display: block;
+    margin-bottom: 100px;
+    margin-left: 10px;
 }
 
 .ingredients {
     display: block;
+    margin-left: 10px;
 }
 
 img {
-    height: 180px;
-    width: 180px;
+    height: 220px;
+    width: 220px;
+    margin-left: 10px;
+
   }
 
 form {
-    margin-left: -80px;
+    margin-left: 80px;
 }
