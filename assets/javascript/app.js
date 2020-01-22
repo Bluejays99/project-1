@@ -1,3 +1,9 @@
+$(document).ready(function () {
+    $(".display-4").on("click", function () {
+        window.location.href = 'index.html';
+    })
+})
+
 
 var ingredients = "";
 var cuisine = "";
@@ -21,7 +27,7 @@ window.addEventListener('load', function () {
     });
 })
 
-//calling the initMap function to show the initial map page before user input. Currently set to Australia.
+//calling the initMap function to show the initial map page before user input. 
 
 function initMap(lat, lng) {
     console.log('has been called');
@@ -89,19 +95,19 @@ function nearbyPlaces(lat, lng) {
 }
 
 $(document).ready(function () {
-    
+
     //creating variables for running the Google Geocode API
     var map;
     var service;
     var infowindow;
-    
+
     $(".zip-submit").on("click", function (event) {
         event.preventDefault();
+
         var zipInput = $("#zip-input").val();
-    
-        // console.log(zipInput);
+        //console.log(zipInput);
         //ajax call for Google Geocoding API
-    
+
         $.ajax({
             url: "https://maps.googleapis.com/maps/api/geocode/json?address=" + zipInput + "&key=AIzaSyAxLgF8nGcZXFMMIAzR9FOFtFXZtem5YlQ",
             method: "GET",
@@ -114,7 +120,7 @@ $(document).ready(function () {
             // console.log('lat:', lat)
             initMap(lat, long);
         })
-    
+
         $("#second-page").hide();
         $("#third-page").show();
         $("#map").show();
@@ -123,7 +129,7 @@ $(document).ready(function () {
     $(".main-button").on("click", function (event) {
         event.preventDefault();
         $("#main-container").hide();
-        $(".glider-contain").hide();
+        $(".carousel").hide();
         $("#second-page").show();
 
         cuisine = $("#cuisine-input").val().trim();
@@ -141,11 +147,11 @@ $(document).ready(function () {
             // var results = response.data;
             var rowDiv = $("<div>");
             rowDiv.addClass("row");
-            
+
             //will loop through 9 images
             for (var i = 0; i < 9; i++) {
 
-                if (response.results[i].thumbnail === "" ) {
+                if (response.results[i].thumbnail === "") {
                     img.attr("src", "../images/carrots.jpg")
                 }
 
@@ -164,6 +170,7 @@ $(document).ready(function () {
 
                 var img = $("<img>");
                 img.attr("src", response.results[i].thumbnail);
+                img.attr("class", "results-img")
                 console.log(response.results[i].thumbnail)
 
                 var recipeTitle = $("<p>");
@@ -186,31 +193,32 @@ $(document).ready(function () {
 
         // normal options...
         infinite: false,
-      
+
         // the magic
         responsive: [{
-      
+
             breakpoint: 1230,
             settings: {
-              slidesToShow: 1,
-              infinite: true,
-              width: 80,
+                slidesToShow: 1,
+                infinite: true,
+                width: 80,
             }
-      
-          }, {
-      
+
+        }, {
+
             breakpoint: 600,
             settings: {
-              slidesToShow: 1,
-              dots: true
+                slidesToShow: 1,
+                dots: true
             }
-      
-          }, {
-      
+
+        }, {
+
             breakpoint: 300,
             settings: "unslick" // destroys slick
-      
-          }]
-      });
+
+        }]
+    });
 
 })
+
